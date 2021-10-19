@@ -92,7 +92,7 @@ namespace Lists_in_Windows_Forms
             }
             else
             {
-                lblStatus.Text = ("Status: ERROR. NO NUMBER SELECTED");
+                lblStatus.Text = (" Status: ERROR. NO NUMBER SELECTED");
             }
                 
 

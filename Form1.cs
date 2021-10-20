@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Lists_in_Windows_Forms
 {
-    public partial class Form1 : Form
+    public partial class frmUsingLists : Form
     {
             List<int> numbers = new List<int>();
             List<string> heroes = new List<string>();
             Random generator = new Random();
            
 
-        public Form1()
+        public frmUsingLists()
         {
             InitializeComponent();
             
@@ -28,7 +28,7 @@ namespace Lists_in_Windows_Forms
             for (int i = 0; i < 20; i++)
                 numbers.Add(generator.Next(100));
             lstNumbers.DataSource = numbers;
-
+            lblStatus.Text = ("Status: Program has been launched.");
             
         }
 
@@ -49,7 +49,7 @@ namespace Lists_in_Windows_Forms
             heroes.Sort();
             lstHeroes.DataSource = null;
             lstHeroes.DataSource = heroes;
-
+            lblStatus.Text = (" Status: Heros successfully sorted.");
 
         }
 
@@ -77,7 +77,7 @@ namespace Lists_in_Windows_Forms
             heroes.Add("SUPERMAN");
             lstHeroes.DataSource = heroes;
 
-            lblStatus.Text = ("New Hero List");
+            lblStatus.Text = ("Status: New Hero List");
             lstHeroes.DataSource = null;
             lstHeroes.DataSource = heroes;
         }
@@ -89,6 +89,7 @@ namespace Lists_in_Windows_Forms
                 numbers.RemoveAt(lstNumbers.SelectedIndex);
                 lstNumbers.DataSource = null;
                 lstNumbers.DataSource = numbers;
+                lblStatus.Text = (" Status: Selected number has been removed.");
             }
             else
             {
@@ -106,24 +107,28 @@ namespace Lists_in_Windows_Forms
             numbers.Clear();
             lstNumbers.DataSource = null;
             lstNumbers.DataSource = numbers;
+            lblStatus.Text = (" Status: Numbers Successfuly cleared.");
         }
 
         private void btnRemoveHero_Click(object sender, EventArgs e)
         {
             
-            heroes.Remove(txtRemoveHeroes.Text);
+            heroes.Remove(txtRemoveHeroes.Text.ToUpper());
 
             lstHeroes.DataSource = null;
             lstHeroes.DataSource = heroes;
-            
+            lblStatus.Text = (" Status: Hero successfully removed.");
+
         }
 
         private void btnAddHero_Click(object sender, EventArgs e)
         {
-            heroes.Add((string)txtAddHeroes.Text);
-
+            heroes.Add((string)txtAddHeroes.Text.ToUpper());
+            
             lstHeroes.DataSource = null;
             lstHeroes.DataSource = heroes;
+
+            lblStatus.Text = (" Status: Hero successfully added.");
         }
     }
 }
